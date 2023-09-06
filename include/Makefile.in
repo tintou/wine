@@ -619,6 +619,8 @@ SOURCES = \
 	physicalmonitorenumerationapi.h \
 	pktdef.h \
 	poppack.h \
+	portabledevicetypes.idl \
+	portabledeviceapi.idl \
 	powrprof.h \
 	prntvpt.h \
 	processthreadsapi.h \

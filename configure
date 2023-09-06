@@ -1341,6 +1341,7 @@ enable_packager
 enable_pdh
 enable_photometadatahandler
 enable_pidgen
+enable_portabledeviceapi
 enable_powrprof
 enable_printui
 enable_prntvpt
@@ -21565,6 +21566,7 @@ wine_fn_config_makefile dlls/pdh enable_pdh
 wine_fn_config_makefile dlls/pdh/tests enable_tests
 wine_fn_config_makefile dlls/photometadatahandler enable_photometadatahandler
 wine_fn_config_makefile dlls/pidgen enable_pidgen
+wine_fn_config_makefile dlls/portabledeviceapi enable_portabledeviceapi
 wine_fn_config_makefile dlls/powrprof enable_powrprof
 wine_fn_config_makefile dlls/printui enable_printui
 wine_fn_config_makefile dlls/prntvpt enable_prntvpt

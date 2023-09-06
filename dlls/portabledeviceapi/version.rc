@@ -1,0 +1,4 @@
+#define WINE_FILEDESCRIPTION_STR "Portable Device API"
+#define WINE_FILENAME_STR "portabledeviceapi.dll"
+
+#include "wine/wine_common_ver.rc"

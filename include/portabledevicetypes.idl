@@ -1,0 +1,196 @@
+/*
+ * COM Classes for PortableDeviceApi
+ *
+ * Copyright 2023 Corentin Noël
+ *
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 2.1 of the License, or (at your option) any later version.
+ *
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
+ */
+
+import "propsys.idl";
+
+interface IPortableDeviceValues;
+interface IPortableDevicePropVariantCollection;
+interface IPortableDeviceKeyCollection;
+interface IPortableDeviceValuesCollection;
+
+typedef enum tagWPD_STREAM_UNITS
+    {
+        WPD_STREAM_UNITS_BYTES	= 0L,
+        WPD_STREAM_UNITS_FRAMES	= 0x1L,
+        WPD_STREAM_UNITS_ROWS	= 0x2L,
+        WPD_STREAM_UNITS_MILLISECONDS	= 0x4L,
+        WPD_STREAM_UNITS_MICROSECONDS	= 0x8L
+    } WPD_STREAM_UNITS;
+
+[
+    object,
+    uuid(6848f6f2-3155-4f86-b6f5-263eeeab3143),
+    pointer_default(unique)
+]
+interface IPortableDeviceValues : IUnknown
+{
+    HRESULT GetCount([in] DWORD *celt);
+
+    HRESULT GetAt(
+        [in] const DWORD index,
+        [in, out, unique, optional] PROPERTYKEY *key,
+        [in, out, unique, optional] PROPVARIANT *value);
+
+    HRESULT SetValue(
+        [in] REFPROPERTYKEY key,
+        [in] const PROPVARIANT *value);
+
+    HRESULT GetValue(
+        [in] REFPROPERTYKEY key,
+        [out] PROPVARIANT *value);
+
+    HRESULT SetStringValue(
+        [in] REFPROPERTYKEY key,
+        [in] const WCHAR *value);
+
+    HRESULT GetStringValue(
+        [in] REFPROPERTYKEY key,
+        [out, optional] WCHAR **value);
+
+    HRESULT SetUnsignedIntegerValue(
+        [in] REFPROPERTYKEY key,
+        [in] const ULONG value);
+
+    HRESULT GetUnsignedIntegerValue(
+        [in] REFPROPERTYKEY key,
+        [out] ULONG *value);
+
+    HRESULT SetSignedIntegerValue(
+        [in] REFPROPERTYKEY key,
+        [in] const LONG value);
+
+    HRESULT GetSignedIntegerValue(
+        [in] REFPROPERTYKEY key,
+        [out] LONG *value);
+
+    HRESULT SetUnsignedLargeIntegerValue(
+        [in] REFPROPERTYKEY key,
+        [in] const ULONGLONG value);
+
+    HRESULT GetUnsignedLargeIntegerValue(
+        [in] REFPROPERTYKEY key,
+        [out] ULONGLONG *value);
+
+    HRESULT SetSignedLargeIntegerValue(
+        [in] REFPROPERTYKEY key,
+        [in] const LONGLONG value);
+
+    HRESULT GetSignedLargeIntegerValue(
+        [in] REFPROPERTYKEY key,
+        [out] LONGLONG *value);
+
+    HRESULT SetFloatValue(
+        [in] REFPROPERTYKEY key,
+        [in] const FLOAT value);
+
+    HRESULT GetFloatValue(
+        [in] REFPROPERTYKEY key,
+        [out] FLOAT *value);
+
+    HRESULT SetErrorValue(
+        [in] REFPROPERTYKEY key,
+        [in] const HRESULT value);
+
+    HRESULT GetErrorValue(
+        [in] REFPROPERTYKEY key,
+        [out] HRESULT *value);
+
+    HRESULT SetKeyValue(
+        [in] REFPROPERTYKEY key,
+        [in] REFPROPERTYKEY value);
+
+    HRESULT GetKeyValue(
+        [in] REFPROPERTYKEY key,
+        [out] REFPROPERTYKEY *value);
+
+    HRESULT SetBoolValue(
+        [in] REFPROPERTYKEY key,
+        [in] const BOOL value);
+
+    HRESULT GetBoolValue(
+        [in] REFPROPERTYKEY key,
+        [out] BOOL *value);
+
+    HRESULT SetIUnknownValue(
+        [in] REFPROPERTYKEY key,
+        [in, optional] IUnknown *value);
+
+    HRESULT GetIUnknownValue(
+        [in] REFPROPERTYKEY key,
+        [out, optional] IUnknown **value);
+
+    HRESULT SetGuidValue(
+        [in] REFPROPERTYKEY key,
+        [in] const GUID value);
+
+    HRESULT GetGuidValue(
+        [in] REFPROPERTYKEY key,
+        [out] GUID *value);
+
+    HRESULT SetBufferValue(
+        [in] REFPROPERTYKEY key,
+        [in, size_is(len)] BYTE *value,
+        [in] DWORD len);
+
+    HRESULT GetBufferValue(
+        [in] REFPROPERTYKEY key,
+        [out, size_is(*len), optional] BYTE **value,
+        [out] DWORD *len);
+
+    HRESULT SetIPortableDeviceValuesValue(
+        [in] REFPROPERTYKEY key,
+        [in, optional] IPortableDeviceValues *value);
+
+    HRESULT GetIPortableDeviceValuesValue(
+        [in] REFPROPERTYKEY key,
+        [out, optional] IPortableDeviceValues **value);
+
+    HRESULT SetIPortableDevicePropVariantCollectionValue(
+        [in] REFPROPERTYKEY key,
+        [in, optional] IPortableDevicePropVariantCollection *value);
+
+    HRESULT GetIPortableDevicePropVariantCollectionValue(
+        [in] REFPROPERTYKEY key,
+        [out, optional] IPortableDevicePropVariantCollection **value);
+
+    HRESULT SetIPortableDeviceKeyCollectionValue(
+        [in] REFPROPERTYKEY key,
+        [in, optional] IPortableDeviceKeyCollection *value);
+
+    HRESULT GetIPortableDeviceKeyCollectionValue(
+        [in] REFPROPERTYKEY key,
+        [out, optional] IPortableDeviceKeyCollection **value);
+
+    HRESULT SetIPortableDeviceValuesCollectionValue(
+        [in] REFPROPERTYKEY key,
+        [in, optional] IPortableDeviceValuesCollection *value);
+
+    HRESULT GetIPortableDeviceValuesCollectionValue(
+        [in] REFPROPERTYKEY key,
+        [out, optional] IPortableDeviceValuesCollection **value);
+
+    HRESULT RemoveValue([in] REFPROPERTYKEY key);
+
+    HRESULT CopyValuesFromPropertyStore([in, optional] IPropertyStore *store);
+
+    HRESULT CopyValuesToPropertyStore([in, optional] IPropertyStore *store);
+
+    HRESULT Clear();
+};

@@ -1,0 +1,11 @@
+MODULE    = portabledeviceapi.dll
+IMPORTLIB = portabledeviceapi
+IMPORTS   = dxguid uuid ole32 advapi32
+
+C_SRCS = \
+	portabledevicemanager.c \
+	portabledevicemanager_main.c
+
+IDL_SRCS = portabledeviceapi_classes.idl
+
+RC_SRCS = version.rc
